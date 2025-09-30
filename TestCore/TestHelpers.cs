@@ -33,7 +33,7 @@ namespace TestCore
         {
             // Test met een verkeerd wachtwoord
             string password = "user3";
-            string passwordHash = "sxnIcZdYt8wC8MYWcQVQjQ==.FKd5Z/jwxPv3a63lX+uvQ0+P7EuNYZybvkmdhbnkIHA="; // Gebruik een geldige hash (zonder $)
+            string passwordHash = "sxnIcZdYt8wC8MYWcQVQjQ==.FKd5Z/jwxPv3a63lX+uvQ0+P7EuNYZybvkmdhbnkIHA=";
             Assert.IsFalse(PasswordHelper.VerifyPassword("wrongpassword", passwordHash));
         }
 
