@@ -37,8 +37,8 @@ namespace TestCore
             Assert.IsFalse(PasswordHelper.VerifyPassword("wrongpassword", passwordHash));
         }
 
-        [TestCase("user1", "IunRhDKa+fWo8+4/Qfj7Pg==.kDxZnUQHCZunGgLIE6d9geULLRIuRmxmH2QKJv2IM88=")]
-        [TestCase("user3", "$xnIcZdYt8wC8MYWcQVjQ==.FKd5Z/jwxPv3a63lX+uvQ8+P7EuNYZybvkmdHbnkIHA=")]
+        [TestCase("user1", "IunRhDKa+fWo8+4/Qfj7Pg==.kDxZnUQHCZun6gLIE6d9oeULLRIuRmxmH2QKJv2IM08=")]
+        [TestCase("user3", "sxnIcZdYt8wC8MYWcQVQjQ==.FKd5Z/jwxPv3a63lX+uvQ0+P7EuNYZybvkmdhbnkIHA=")]
         public void TestPasswordHelperReturnsFalse(string password, string passwordHash)
         {
             // Test met een verkeerd wachtwoord
