@@ -99,11 +99,18 @@ namespace Grocery.App.ViewModels
         {
             GroceryListItem? item = MyGroceryListItems.FirstOrDefault(x => x.ProductId == productId);
             if (item == null) return;
-            if (item.Amount >= item.Product.Stock) return;
+
+            // Checks if there is still stock
+            Product? product = _productService.Get(productId);
+            if (product == null || product.Stock <= 0) return;
+
+            // increase amount and decrease stock
             item.Amount++;
             _groceryListItemsService.Update(item);
-            item.Product.Stock--;
-            _productService.Update(item.Product);
+
+            product.Stock--;
+            _productService.Update(product);
+
             OnGroceryListChanged(GroceryList);
         }
 
@@ -112,11 +119,21 @@ namespace Grocery.App.ViewModels
         {
             GroceryListItem? item = MyGroceryListItems.FirstOrDefault(x => x.ProductId == productId);
             if (item == null) return;
-            if (item.Amount <= 0) return;
+
+            // checks if amount is already 1
+            if (item.Amount <= 1) return;
+
+            // decrease amount and increase stock
             item.Amount--;
             _groceryListItemsService.Update(item);
-            item.Product.Stock++;
-            _productService.Update(item.Product);
+
+            Product? product = _productService.Get(productId);
+            if (product != null)
+            {
+                product.Stock++;
+                _productService.Update(product);
+            }
+
             OnGroceryListChanged(GroceryList);
         }
     }

@@ -38,7 +38,11 @@ namespace Grocery.Core.Data.Repositories
         {
             Product? product = products.FirstOrDefault(p => p.Id == item.Id);
             if (product == null) return null;
-            product.Id = item.Id;
+
+            // Update all relevant options, not only Id
+            product.Name = item.Name;
+            product.Stock = item.Stock;  // This was the bug, it only updates product.Id
+
             return product;
         }
     }
