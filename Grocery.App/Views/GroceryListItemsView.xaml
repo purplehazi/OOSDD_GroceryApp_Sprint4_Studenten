@@ -38,13 +38,30 @@
                                 <ColumnDefinition Width="20"/>
                                 <ColumnDefinition Width="20"/>
                             </Grid.ColumnDefinitions>
+                            
                             <Label Grid.Column="0" Text="{Binding Product.Name}" VerticalOptions="Center"/>
                             <Label Grid.Column="1" Text="{Binding Amount}" VerticalOptions="Center" HorizontalOptions="End" Margin="0,0,10,0"/>
+
+                            <!-- Plus knop met TapGestureRecognizer -->
                             <Grid Grid.Column="2">
-                                <Image Source="plus.png" WidthRequest="15" HeightRequest="15"/>
+                                <Image Source="plus.png" WidthRequest="15" HeightRequest="15">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:GroceryListItemsViewModel}}, Path=IncreaseAmountCommand}"
+                                            CommandParameter="{Binding ProductId}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </Grid>
+
+                            <!-- Min knop met TapGestureRecognizer -->
                             <Grid Grid.Column="3">
-                                <Image Source="min.png" WidthRequest="15" HeightRequest="15"/>
+                                <Image Source="min.png" WidthRequest="15" HeightRequest="15">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:GroceryListItemsViewModel}}, Path=DecreaseAmountCommand}"
+                                            CommandParameter="{Binding ProductId}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </Grid>
                         </Grid>
                     </DataTemplate>
