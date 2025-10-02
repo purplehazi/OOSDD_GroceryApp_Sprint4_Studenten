@@ -38,7 +38,14 @@ namespace Grocery.Core.Data.Repositories
         public GroceryList? Update(GroceryList item)
         {
             GroceryList? groceryList = groceryLists.FirstOrDefault(g => g.Id == item.Id);
-            groceryList = item;
+            if (groceryList == null) return null;
+
+            // Update the properties of the existing item in the list. 
+            groceryList.Name = item.Name;
+            groceryList.Date = item.Date;
+            groceryList.Color = item.Color;
+            groceryList.ClientId = item.ClientId;
+
             return groceryList;
         }
     }
