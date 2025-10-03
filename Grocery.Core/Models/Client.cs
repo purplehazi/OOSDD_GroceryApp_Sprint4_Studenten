@@ -5,10 +5,15 @@ namespace Grocery.Core.Models
     {
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        public Client(int id, string name, string emailAddress, string password) : base(id, name)
+        public Role Role { get; set; } = Role.None;  // Every client has a role
+
+        // Constructor receives role parameter
+        public Client(int id, string name, string emailAddress, string password, Role role = Role.None)
+            : base(id, name)
         {
-            EmailAddress=emailAddress;
-            Password=password;
+            EmailAddress = emailAddress;
+            Password = password;
+            Role = role;  // Assign role
         }
     }
 }
