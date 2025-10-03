@@ -25,19 +25,29 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!-- PLaats hier de header velden voor de tabel-->
+
+                    <!-- HEADERS OF THE TABLE -->
+                    <Label Grid.Column="0" Text="#" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Grid.Column="1" Text="Naam" FontAttributes="Bold" HorizontalOptions="Start"/>
+                    <Label Grid.Column="2" Text="Verkocht" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <Label Grid.Column="3" Text="Voorraad" FontAttributes="Bold" HorizontalOptions="Center"/>
                 </Grid>
             </CollectionView.Header>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="m:BestSellingProducts">
-                    <Grid>
+                    <Grid Padding="0,5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!-- PLaats hier de datavelden voor de tabel-->
+
+                        <!-- DATA OF THE TABLE -->
+                        <Label Grid.Column="0" Text="{Binding Ranking}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Name}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                        <Label Grid.Column="2" Text="{Binding NrOfSells}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                        <Label Grid.Column="3" Text="{Binding Stock}" HorizontalOptions="Center" VerticalOptions="Center"/>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
