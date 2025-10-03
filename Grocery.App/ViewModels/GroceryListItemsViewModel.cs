@@ -120,8 +120,8 @@ namespace Grocery.App.ViewModels
             GroceryListItem? item = MyGroceryListItems.FirstOrDefault(x => x.ProductId == productId);
             if (item == null) return;
 
-            // checks if amount is already 1
-            if (item.Amount <= 1) return;
+            // checks if amount is already 0 (was: <= 1, nu: <= 0)
+            if (item.Amount <= 0) return;  // ← Fixed, you can go from 1 to 0 now
 
             // decrease amount and increase stock
             item.Amount--;
